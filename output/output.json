@@ -1,0 +1,75 @@
+{
+  "metadata": {
+    "documents": [
+      "1.pdf",
+      "2.pdf",
+      "3.pdf",
+      "4.pdf",
+      "5.pdf",
+      "6.pdf",
+      "7.pdf"
+    ],
+    "persona": "Travel Planner",
+    "job_to_be_done": "Plan a trip of 4 days for a group of 10 college friends.",
+    "processed_at": "2025-07-19T10:23:45.940018Z"
+  },
+  "extracted_sections": [
+    {
+      "document": "6.pdf",
+      "page_number": 6,
+      "section_title": "City Exploration ",
+      "importance_rank": 1
+    },
+    {
+      "document": "6.pdf",
+      "page_number": 5,
+      "section_title": "Safety and Comfort ",
+      "importance_rank": 2
+    },
+    {
+      "document": "6.pdf",
+      "page_number": 3,
+      "section_title": "Packing for Adults Clothing ",
+      "importance_rank": 3
+    },
+    {
+      "document": "6.pdf",
+      "page_number": 5,
+      "section_title": "Essentials ",
+      "importance_rank": 4
+    },
+    {
+      "document": "5.pdf",
+      "page_number": 8,
+      "section_title": "Educational Experiences ",
+      "importance_rank": 5
+    }
+  ],
+  "subsection_analysis": [
+    {
+      "document": "6.pdf",
+      "page_number": 6,
+      "refined_text": "tips and tricks for packing \u2022 Check the weather before packing to ensure appropriate clothing. use Packing Cubes: Organize clothes and maximize space. wear bulky items like coats or boots during travel to save suitcase space."
+    },
+    {
+      "document": "6.pdf",
+      "page_number": 5,
+      "refined_text": "check if a car seat is provided if renting a car. add a blanket and travel pillow for comfort during flights or long car rides. consider packing a travel potty for young children."
+    },
+    {
+      "document": "6.pdf",
+      "page_number": 3,
+      "refined_text": "if you plan on hiking or outdoor activities, pack activewear like leggings, shorts, and moisture-wicking tops. accessories: a stylish yet functional bag, a lightweight scarf, and a versatile jacket."
+    },
+    {
+      "document": "6.pdf",
+      "page_number": 5,
+      "refined_text": "diapers and wipes: for babies or toddlers, pack enough diapers and wipes. a tablet with pre- downloaded content. Include comfort items like blankets or stuffed animal."
+    },
+    {
+      "document": "5.pdf",
+      "page_number": 8,
+      "refined_text": "discover the planetarium, a planetarium, and a replica of the Mir space station. explore the Mus\u00e9e Oc\u00e9anographique and its marine exhibits, including a shark lagoon and touch tanks. visit museums dedicated to prehistoric life."
+    }
+  ]
+}

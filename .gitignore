@@ -1,0 +1,6 @@
+venv
+/frontend/node_modules/
+__pycache__/
+mainlogic.py
+mainlogic2.py
+/models
