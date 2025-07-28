@@ -3,7 +3,7 @@
 After cloning the repository:
 
 ```bash
-cd backend
+git clone <url>
 ```
 
 ---
@@ -11,7 +11,7 @@ cd backend
 ### 🐳 Build the Docker Image
 
 ```bash
-docker build --platform=linux/amd64 -t mysolutionname:somerandomid .
+docker build --platform=linux/amd64 -t mysolutionname:docsage .
 ```
 
 ---
@@ -25,7 +25,7 @@ docker run --rm `
   -v "${PWD}\input:/app/input" `
   -v "${PWD}\output:/app/output" `
   --network none `
-  mysolutionname:somerandomid
+  mysolutionname:docsage
 ```
 
 #### 🐧 On Linux / macOS:
@@ -35,7 +35,7 @@ docker run --rm \
   -v $(pwd)/input:/app/input \
   -v $(pwd)/output:/app/output \
   --network none \
-  mysolutionname:somerandomid
+  mysolutionname:docsage
 ```
 
 ---
