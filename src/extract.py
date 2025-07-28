@@ -1,4 +1,4 @@
-import fitz  # PyMuPDF
+import fitz  
 import statistics
 from collections import Counter
 import re
@@ -32,7 +32,6 @@ def flatten_table_blocks(tables):
 
 
 def normalize(text):
-    # Lowercase, remove punctuation, strip whitespace
     return re.sub(r'[^\w\s]', '', text.lower()).strip()
 
 def is_duplicate_title(heading_text, title_text):

@@ -24,12 +24,12 @@ def extract_section_text(pdf_path, page_number, heading_text):
     text = page.get_textbox(found).strip()
     return text
 
-def main(input_path="input/input1.json", pdf_dir="input/", output_path="output/output.json"):
-    input_data = load_input(input_path)
+def process_case(json_path, pdf_dir, output_path):
+    input_data = load_input(json_path)
     persona = input_data['persona']['role']
     job = input_data['job_to_be_done']['task']
     documents = input_data['documents']
-    
+
     embedder = Embedder()
     summarizer = Summarizer()
 
@@ -43,7 +43,7 @@ def main(input_path="input/input1.json", pdf_dir="input/", output_path="output/o
         if not os.path.exists(filepath):
             print(f"[!] File not found: {filepath}")
             continue
-        
+
         outline_data = extract_outline(filepath)
         print(f"[DEBUG] Outline for {filename}:", json.dumps(outline_data, indent=2))
 
@@ -62,17 +62,13 @@ def main(input_path="input/input1.json", pdf_dir="input/", output_path="output/o
                 "text": section_text
             })
 
-    print(f"[DEBUG] Extracted {len(section_records)} sections:")
-    for s in section_records:
-        print(f" - {s['doc']} | Page {s['page']} | Heading: {s['heading']} | Snippet: {s['text'][:60]}...")
-
+    print(f"[DEBUG] Extracted {len(section_records)} sections.")
     if not section_records:
         print("[!] No valid sections found.")
         return
 
-    section_texts = [(s["text"]+s["doc"]) for s in section_records]
+    section_texts = [(s["text"] + s["doc"]) for s in section_records]
     section_embeddings = embedder.embed_sections(section_texts)
-
     ranked_sections = embedder.rank_sections_by_query(query_embedding, query_string, section_records, section_embeddings)
 
     top_k = min(7, len(ranked_sections))
@@ -112,10 +108,37 @@ def main(input_path="input/input1.json", pdf_dir="input/", output_path="output/o
         ]
     }
 
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, 'w') as f:
         json.dump(output, f, indent=2)
 
     print(f"[✓] Done. Output saved to {output_path}")
+
+def main():
+    input_base = "input"
+    output_base = "output"
+
+    for testcase in os.listdir(input_base):
+        testcase_path = os.path.join(input_base, testcase)
+        if not os.path.isdir(testcase_path):
+            continue
+
+        
+        json_files = [f for f in os.listdir(testcase_path) if f.endswith(".json")]
+        if not json_files:
+            print(f"[!] No JSON found in {testcase_path}")
+            continue
+        json_path = os.path.join(testcase_path, json_files[0])
+
+       
+        pdf_dir = os.path.join(testcase_path, "pdf")
+        if not os.path.exists(pdf_dir):
+            print(f"[!] No PDF folder found in {testcase_path}")
+            continue
+
+        output_path = os.path.join(output_base, f"{testcase}.json")
+        print(f"\n[★] Processing {testcase}...")
+        process_case(json_path, pdf_dir, output_path)
 
 if __name__ == "__main__":
     main()
