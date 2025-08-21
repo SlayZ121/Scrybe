@@ -1,4 +1,3 @@
-### Task 1A: Run the PDF Processor
 
 After cloning the repository:
 
